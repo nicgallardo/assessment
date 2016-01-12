@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('monk')('localhost/final');
+var db = require('monk')(process.env.MONGOLAB_URI);
 var Posts = db.get('post');
 var Opinion = db.get('opinion')
 /* GET home page. */
