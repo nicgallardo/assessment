@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  div(class="row text-center")
+    h2=doc.title
+  div(class="row")
+    div(class="col-md-12")
+      div(class="col-md-offset-1 col-md-4")
+        img(src=doc.picURL width="300px")
+      div(class="col-md-3")
+        p= doc.summary
+        a(href=doc.link) link
+        
+  div(class="row")
+    div(class="col-md-offset-1 col-md-6")
+      h2 Opinions
+      form(method="post" action="/add-opinion")
+        p Whats yours?
+          input(type='textarea' name='opinion')
+          input(type="hidden" name="articleID" value=doc._id)
+        p
+          input(type="submit" value="opine")
+          
+    div(class="col-md-offset-1 col-md-5")
+      h3 list of your important opinions
+      ul
+        each op in ops
+          h5= op.opinion
+          hr
+    div(class="col-md-offset-1 col-md-3")
+      div(class="row")
+        div(class="col-md-12")
+          h4(class="text-center") Expert Analysis
+          ul
+            each val, word in wordCount
+              li= word + ': ' + val
+      div(class="row")
+        div(class="col-md-12 alert alert-warning")
+          h4 Word counts omit "the", "if", "a", "I", "of", "and", & "not" !
+          
+      

@@ -1,0 +1,15 @@
+doctype html
+html(ng-app)
+  head
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
+    script(src="/javascripts/main.js")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class="navbar")
+      div(class="title text-center vertical-center")
+        div(class="col-md-4")
+          h2 Galvanize Gazette
+          h5 all the news thats fit to link
+        
+    block content

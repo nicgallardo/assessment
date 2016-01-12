@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-offset-1 col-md-4")
+      h3 Add A Story  
+        span
+          input(type="checkbox" ng-model="checked" ng-init="checker=true")
+  div(class="row" ng-if="checked")
+    div(class="col-md-offset-1 col-md-6")
+      form(method="post" action="/get-post")
+        div(class="row col-md-12")
+          div(class="row")  
+            div(class="col-md-2")
+              p title
+            div(class="col-md-8")
+              input(type='text', name='title')
+          div(class="row")    
+            div(class="col-md-2")
+              p link
+            div(class="col-md-8")
+              input(type='text' name='link')
+          div(class="row")  
+            div(class="col-md-2")
+              p image URL
+            div(class="col-md-8")
+              input(type='text' name='picURL')
+          div(class="row")  
+            div(class="col-md-2")
+              p summary
+            div(class="col-md-8")
+              textarea(class="form-control" rows="5" name="summary")
+        div(class="row col-md-offset-2 text-left")
+          button(type="submit" class="btn btn-primary") Link It Up!
+  div(class="row")
+    div(class="col-md-12 text-center") 
+      if posts
+        h3 Today's News
+      ul
+        each post in posts
+          div(class="col-md-4")
+            div(class="col-md-12")
+              img(src=post.picURL width="300px")
+            div(class="row text-center")
+              a(href="stories/"+post._id)= post.title
